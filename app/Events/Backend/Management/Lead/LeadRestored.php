@@ -5,7 +5,7 @@ namespace App\Events\Backend\Management\Lead;
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class LeadResored.
+ * Class LeadRestored.
  */
 class LeadRestored
 {
