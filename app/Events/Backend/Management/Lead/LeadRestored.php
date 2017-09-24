@@ -7,7 +7,7 @@ use Illuminate\Queue\SerializesModels;
 /**
  * Class LeadResored.
  */
-class LeadResored
+class LeadRestored
 {
     use SerializesModels;
 
