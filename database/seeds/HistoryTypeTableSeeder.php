@@ -38,6 +38,11 @@ class HistoryTypeTableSeeder extends Seeder
             'name'       => 'Lead',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+         ],
+         [
+            'name'       => 'CallDisposition',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
          ]
       ];
 

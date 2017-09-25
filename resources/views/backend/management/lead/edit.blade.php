@@ -1,20 +1,21 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.management.leads.title') . ' | ' . trans('labels.backend.management.lead.create'))
+@section ('title', trans('labels.backend.management.leads.title') . ' | ' . trans('labels.backend.management.leads.edit_title'))
 
 @section('page-header')
 <h1>
    {{ trans('labels.backend.management.leads.title') }}
-   <small>{{ trans('labels.backend.management.leads.create') }}</small>
+   <small>{{ trans('labels.backend.management.leads.edit_title') }}</small>
 </h1>
 @endsection
 
 @section('content')
-{{ Form::open(['route' => 'admin.management.lead.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+{{ Form::model($lead, ['route' => ['admin.management.lead.update', $lead], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) }}
+{{ Form::hidden('lead_id', $lead->id) }}
 
 <div class="box box-success">
    <div class="box-header with-border">
-      <h3 class="box-title">{{ trans('labels.backend.management.leads.create') }}</h3>
+      <h3 class="box-title">{{ trans('labels.backend.management.leads.edit', ['lead' => $lead->name]) }}</h3>
 
       <div class="box-tools pull-right">
          @include('backend.management.lead.includes.partials.lead-header-buttons')
@@ -55,12 +56,12 @@
 
          <tr>
             <th>{{ trans('validation.attributes.backend.management.lead.phone_number') }}</th>
-            <td>{{ Form::text('phone_number', null, ['class' => 'form-control', 'maxlength' => '191', 'placeholder' => trans('validation.attributes.backend.management.lead.phone_number')]) }}</td>
+            <td>{{ Form::text('phone_number', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.backend.management.lead.phone_number')]) }}</td>
          </tr>
 
          <tr>
             <th>{{ trans('validation.attributes.backend.management.lead.mobile_number') }}</th>
-            <td>{{ Form::text('mobile_number', null, ['class' => 'form-control', 'maxlength' => '191', 'placeholder' => trans('validation.attributes.backend.management.lead.mobile_number')]) }}</td>
+            <td>{{ Form::text('mobile_number', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.backend.management.lead.mobile_number')]) }}</td>
          </tr>
 
          <tr>
@@ -98,7 +99,7 @@
       </div><!--pull-left-->
 
       <div class="pull-right">
-         {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success btn-xs']) }}
+         {{ Form::submit(trans('buttons.general.crud.edit'), ['class' => 'btn btn-success btn-xs']) }}
       </div><!--pull-right-->
 
       <div class="clearfix"></div>

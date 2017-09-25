@@ -15,10 +15,11 @@ return [
 
    'backend' => [
       'management'      => [
-         'leads'        => [
+         'lead'        => [
             'created'   => ':lead was successfully created.',
-            'deleted'   => 'The lead was successfully deleted.',
-            'updated'   => 'The lead was successfully updated.'
+            'deleted'   => 'Lead :lead was successfully deleted.',
+            'updated'   => 'Lead :lead was successfully updated.',
+            'restored'  => 'Lead :lead was successfully restored'
          ],
       ],
 

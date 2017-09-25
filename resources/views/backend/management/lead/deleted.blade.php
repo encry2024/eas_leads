@@ -1,6 +1,6 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.management.leads.title'))
+@section ('title', trans('labels.backend.management.leads.title') . ' | ' . trans('labels.backend.management.leads.deleted'))
 
 @section('after-styles')
 {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
@@ -9,14 +9,14 @@
 @section('page-header')
 <h1>
    {{ trans('labels.backend.management.leads.title') }}
-   <small>{{ trans('labels.backend.management.leads.availables') }}</small>
+   <small>{{ trans('labels.backend.management.leads.deleted') }}</small>
 </h1>
 @endsection
 
 @section('content')
 <div class="box box-success">
    <div class="box-header with-border">
-      <h3 class="box-title">{{ trans('labels.backend.management.leads.availables') }}</h3>
+      <h3 class="box-title">{{ trans('labels.backend.management.leads.deleted') }}</h3>
 
       <div class="box-tools pull-right">
          @include('backend.management.lead.includes.partials.lead-header-buttons')
@@ -41,34 +41,27 @@
       </div><!--table-responsive-->
    </div><!-- /.box-body -->
 </div><!--box-->
-
-<div class="box box-info">
-   <div class="box-header with-border">
-      <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
-      <div class="box-tools pull-right">
-         <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-      </div><!-- /.box tools -->
-   </div><!-- /.box-header -->
-   <div class="box-body">
-      {!! history()->renderType('Lead') !!}
-   </div><!-- /.box-body -->
-</div><!--box box-success-->
 @endsection
 
 @section('after-scripts')
 {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
 {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
+
 <script>
-$(function () {
+$(function() {
    $('#leads-table').DataTable({
       dom: 'lfrtip',
-      processing: true,
+      processing: false,
       serverSide: true,
       autoWidth: false,
       ajax: {
          url: '{{ route("admin.management.lead.get") }}',
          type: 'post',
-         data: {trashed: false}
+         data: {status: false, trashed: true},
+         error: function (xhr, err) {
+            if (err === 'parsererror')
+            location.reload();
+         }
       },
       columns: [
          {data: 'id', name: '{{config('management.leads_table')}}.id'},
@@ -81,6 +74,44 @@ $(function () {
       ],
       order: [[0, "asc"]],
       searchDelay: 500
+   });
+
+   $("body").on("click", "a[name='delete_lead_perm']", function(e) {
+      e.preventDefault();
+      var linkURL = $(this).attr("href");
+
+      swal({
+         title: "{{ trans('strings.backend.general.are_you_sure') }}",
+         text: "{{ trans('strings.backend.management.lead.delete_lead_confirm') }}",
+         type: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#DD6B55",
+         confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
+         cancelButtonText: "{{ trans('buttons.general.cancel') }}",
+         closeOnConfirm: false
+      }, function(isConfirmed){
+         if (isConfirmed){
+            window.location.href = linkURL;
+         }
+      });
+   }).on("click", "a[name='restore_lead']", function(e) {
+      e.preventDefault();
+      var linkURL = $(this).attr("href");
+
+      swal({
+         title: "{{ trans('strings.backend.general.are_you_sure') }}",
+         text: "{{ trans('strings.backend.management.lead.restore_lead_confirm') }}",
+         type: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#DD6B55",
+         confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
+         cancelButtonText: "{{ trans('buttons.general.cancel') }}",
+         closeOnConfirm: false
+      }, function(isConfirmed){
+         if (isConfirmed){
+            window.location.href = linkURL;
+         }
+      });
    });
 });
 </script>

@@ -45,7 +45,7 @@ class LeadStatusController extends Controller
    {
       $this->leads->forceDelete($deleteLead);
 
-      return redirect()->route('admin.management.lead.deleted')->withFlashSuccess(trans('alerts.backend.management.leads.deleted_permanently'));
+      return redirect()->route('admin.management.lead.deleted')->withFlashSuccess(trans('alerts.backend.management.lead.deleted_permanently'));
    }
 
    /**
@@ -58,6 +58,6 @@ class LeadStatusController extends Controller
    {
       $this->leads->restore($deleteLead);
 
-      return redirect()->route('admin.management.lead.index')->withFlashSuccess(trans('alerts.backend.inventory.leads.restored'));
+      return redirect()->route('admin.management.lead.index')->withFlashSuccess(trans('alerts.backend.management.lead.restored', ['lead' => $deleteLead->name]));
    }
 }

@@ -34,7 +34,7 @@ class LeadTableController extends Controller
    {
       return Datatables::of(
          $this->leads->getForDataTable($request->get('trashed')))
-         ->escapeColumns(['name', 'company_name'])
+         ->escapeColumns(['name', 'company_name', 'email'])
          ->addColumn('actions', function ($lead) {
             return $lead->action_buttons;
          })

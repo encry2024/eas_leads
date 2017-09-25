@@ -1,6 +1,7 @@
 <div class="pull-right mb-10 hidden-sm hidden-xs">
    {{ link_to_route('admin.management.lead.index', trans('menus.backend.management.lead.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
    {{ link_to_route('admin.management.lead.create', trans('menus.backend.management.lead.create'), [], ['class' => 'btn btn-success btn-xs']) }}
+   {{ link_to_route('admin.management.lead.deleted', trans('menus.backend.management.lead.deleted'), [], ['class' => 'btn btn-danger btn-xs']) }}
 </div><!--pull right-->
 
 <div class="pull-right mb-10 hidden-lg hidden-md">

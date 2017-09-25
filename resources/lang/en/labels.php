@@ -35,67 +35,118 @@ return [
       'management'   => [
          'leads'  => [
             'title'        => 'Leads Management',
+            'view'         => 'View :lead Lead',
+            'view_title'   => 'View Lead',
+            'edit'         => 'Edit :lead',
+            'edit_title'   => 'Edit Lead',
 
             'availables'   => 'Leads Available',
             'create'       => 'Create Leads',
+            'deleted'      => 'View Deleted Leads',
 
-            'id'                    => 'ID',
-            'name'                  => 'Name',
-            'company_name'          => 'Company Name',
-            'appointment_schedule'  => 'Appointed Schedule',
-            'date_contacted'        => 'Date Contacted',
-            'disposition'           => 'Disposition',
-            'note'                  => 'Note',
-            'reminder'              => 'Reminder',
-            'nature_of_business'    => 'Nature of Business',
-            'overall_assessment'    => 'Overall Assessment',
-            'additional_information'  => 'Additional Information',
-            'created_at'            => 'Date Added',
-            'updated_at'            => 'Last Update',
+            'id'                       => 'ID',
+            'name'                     => 'Name',
+            'company_name'             => 'Company Name',
+            'appointment_schedule'     => 'Appointed Schedule',
+            'date_contacted'           => 'Date Contacted',
+            'disposition'              => 'Disposition',
+            'note'                     => 'Note',
+            'reminder'                 => 'Reminder',
+            'phone_number'             => 'Phone Number',
+            'mobile_number'            => 'Mobile Number',
+            'nature_of_business'       => 'Nature of Business',
+            'overall_assessment'       => 'Overall Assessment',
+            'additional_information'   => 'Additional Information',
+            'created_at'               => 'Date Added',
+            'updated_at'               => 'Last Update',
 
             'table'  => [
-               'id'                    => 'ID',
-               'name'                  => 'Name',
-               'company_name'          => 'Company Name',
-               'contact_person'        => 'Contact Person',
-               'email'                 => 'E-mail',
-               'phone_number'          => 'Phone Number',
-               'appointment_schedule'  => 'Appointed Schedule',
-               'date_contacted'        => 'Date Contacted',
-               'disposition'           => 'Disposition',
-               'note'                  => 'Note',
-               'reminder'              => 'Reminder',
-               'nature_of_business'    => 'Nature of Business',
-               'overall_assessment'    => 'Overall Assessment',
-               'additional_information'  => 'Additional Information',
-               'created_at'            => 'Date Added',
-               'updated_at'            => 'Last Update',
+               'id'                       => 'ID',
+               'name'                     => 'Name',
+               'company_name'             => 'Company Name',
+               'contact_person'           => 'Contact Person',
+               'email'                    => 'E-mail',
+               'phone_number'             => 'Phone Number',
+               'mobile_number'            => 'Mobile Number',
+               'appointment_schedule'     => 'Appointed Schedule',
+               'date_contacted'           => 'Date Contacted',
+               'disposition'              => 'Disposition',
+               'note'                     => 'Note',
+               'reminder'                 => 'Reminder',
+               'nature_of_business'       => 'Nature of Business',
+               'overall_assessment'       => 'Overall Assessment',
+               'additional_information'   => 'Additional Information',
+               'created_at'               => 'Date Added',
+               'updated_at'               => 'Last Update',
             ],
 
             'tabs'   => [
-               'title'  => [
+               'titles'  => [
                   'overview'  => 'Overview',
                   'history'   => 'History',
                ],
 
-               'show'   => [
-                  'contents'  => [
-                     'overview'  => [
-                        'id'                    => 'ID',
-                        'name'                  => 'Name',
-                        'company_name'          => 'Company Name',
-                        'appointment_schedule'  => 'Appointed Schedule',
-                        'date_contacted'        => 'Date Contacted',
-                        'disposition'           => 'Disposition',
-                        'note'                  => 'Note',
-                        'reminder'              => 'Reminder',
-                        'nature_of_business'    => 'Nature of Business',
-                        'overall_assessment'    => 'Overall Assessment',
-                        'additional_information'  => 'Additional Information',
-                        'created_at'            => 'Date Added',
-                        'updated_at'            => 'Last Update',
-                     ]
-                  ]
+               'overview'  => [
+                  'id'                       => 'ID',
+                  'name'                     => 'Name',
+                  'company_name'             => 'Company Name',
+                  'appointment_schedule'     => 'Appointed Schedule',
+                  'date_contacted'           => 'Date Contacted',
+                  'disposition'              => 'Disposition',
+                  'note'                     => 'Note',
+                  'reminder'                 => 'Reminder',
+                  'phone_number'             => 'Phone Number',
+                  'mobile_number'            => 'Mobile Number',
+                  'nature_of_business'       => 'Nature of Business',
+                  'overall_assessment'       => 'Overall Assessment',
+                  'additional_information'   => 'Additional Information',
+                  'created_at'               => 'Date Added',
+                  'updated_at'               => 'Last Update',
+               ]
+            ],
+         ],
+
+         'call_dispositions'  => [
+            'title'        => 'Call Dispositions Management',
+            'view'         => 'View :call_disposition Call Disposition',
+            'view_title'   => 'View Call Disposition',
+            'edit'         => 'Edit :call_disposition',
+            'edit_title'   => 'Edit Lead',
+
+            'availables'   => 'Call Dispositions Available',
+            'create'       => 'Create Call Dispositions',
+            'deleted'      => 'View Deleted Call Dispositions',
+
+            'availables'   => 'Call Disposition Available',
+            'create'       => 'Create Call Disposition',
+            'deleted'      => 'View Deleted Call Disposition',
+
+            'id'           => 'ID',
+            'name'         => 'Name',
+            'description'  => 'Description',
+            'created_at'   => 'Date Created',
+            'updated_at'   => 'Last Updated',
+
+            'table'        => [
+               'id'           => 'ID',
+               'name'         => 'Name',
+               'description'  => 'Description',
+               'created_at'   => 'Date Created',
+               'updated_at'   => 'Last Updated',
+            ],
+
+            'tabs'   => [
+               'titles'  => [
+                  'overview'  => 'Overview',
+                  'history'   => 'History',
+               ],
+
+               'overview'  => [
+                  'id'              => 'ID',
+                  'name'            => 'Name',
+                  'description'     => 'Description',
+                  'created_at'      => 'Date Added',
+                  'updated_at'      => 'Last Update',
                ]
             ],
          ]

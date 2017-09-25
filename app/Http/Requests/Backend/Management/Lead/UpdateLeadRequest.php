@@ -3,12 +3,11 @@
 namespace App\Http\Requests\Backend\Management\Lead;
 
 use App\Http\Requests\Request;
-use Illuminate\Validation\Rule;
 
 /**
-* Class StoreLeadRequest.
+* Class UpdateLeadRequest.
 */
-class StoreLeadRequest extends Request
+class UpdateLeadRequest extends Request
 {
    /**
    * Determine if the user is authorized to make this request.
@@ -31,10 +30,10 @@ class StoreLeadRequest extends Request
          'name'                           => 'required|max:191',
          'company_name'                   => 'required|max:191',
          'additional_information'         => 'required|max:191',
-         'email'                          => ['required', 'email', 'max:191', Rule::unique('leads')],
+         'email'                          => ['required', 'unique:leads,email,' . Request::get('lead_id')],
          'contact_person'                 => 'required',
-         'mobile_number'                  => ['required_if:phone_number,""', 'regex:/(\+63|0)9+[0-9]{9}$/i', 'unique:leads,mobile_number', 'nullable'],
-         'phone_number'                   => ['required_if:mobile_number,""', 'regex:/([0-9]){2}[-]+[0-9]{3}[0-9]{2}[0-9]{2}$/i', 'unique:leads,phone_number', 'nullable'],
+         'mobile_number'                  => ['required_if:phone_number,""', 'regex:/(\+63|0)9+[0-9]{9}$/i', 'unique:leads,mobile_number,' . Request::get('lead_id'), 'nullable'],
+         'phone_number'                   => ['required_if:mobile_number,""', 'regex:/([0-9]){2}[-]+[0-9]{3}[0-9]{2}[0-9]{2}$/i', 'unique:leads,phone_number,' . Request::get('lead_id'), 'nullable'],
          'nature_of_business'             => 'required',
          'overall_assessment'             => 'max:191',
          'reminder'                       => 'max:191',

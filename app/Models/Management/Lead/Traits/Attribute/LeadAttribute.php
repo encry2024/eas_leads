@@ -1,12 +1,20 @@
 <?php
 
-namespace App\Models\Management\Lead\Traits\Attributes;
+namespace App\Models\Management\Lead\Traits\Attribute;
 
 /**
 * Class LeadAttribute.
 */
 trait LeadAttribute
 {
+   /**
+   * @return string
+   */
+   public function getAppointedScheduleAttribute()
+   {
+      return date('F d, Y - l', strtotime($this->appointment_schedule));
+   }
+
    /**
    * @return string
    */
@@ -28,7 +36,7 @@ trait LeadAttribute
    */
    public function getDeleteButtonAttribute()
    {
-      if ($this->id != access()->id() && $this->id != 1) {
+      if(access()->id() == 1) {
          return '<a href="'.route('admin.management.lead.destroy', $this).'"
          data-method="delete"
          data-trans-button-cancel="'.trans('buttons.general.cancel').'"

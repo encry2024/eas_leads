@@ -8,6 +8,7 @@ use App\Models\Management\Lead\Lead;
 use App\Repositories\Backend\Management\Lead\LeadRepository;
 use App\Http\Requests\Backend\Management\Lead\ManageLeadRequest;
 use App\Http\Requests\Backend\Management\Lead\StoreLeadRequest;
+use App\Http\Requests\Backend\Management\Lead\UpdateLeadRequest;
 
 class LeadController extends Controller
 {
@@ -46,21 +47,21 @@ class LeadController extends Controller
    */
    public function store(StoreLeadRequest $request)
    {
-      $this->leads->create(
-         [
-            'data' => $request->only(
-               'name',
-               'company_name',
-               'contact_person',
-               'email',
-               'phone_number',
-               'additional_information',
-               'appointment_schedule',
-               'date_contacted',
-               'overall_assessment',
-               'nature_of_business',
-               'note',
-               'reminder'
+      $this->leads->create([
+         'data' => $request->only(
+            'name',
+            'company_name',
+            'contact_person',
+            'email',
+            'mobile_number',
+            'phone_number',
+            'additional_information',
+            'appointment_schedule',
+            'date_contacted',
+            'overall_assessment',
+            'nature_of_business',
+            'note',
+            'reminder'
             )
          ]
       );
@@ -74,9 +75,9 @@ class LeadController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function show($id)
+   public function show(Lead $lead, ManageLeadRequest $request)
    {
-      //
+      return view('backend.management.lead.show')->withLead($lead);
    }
 
    /**
@@ -85,9 +86,9 @@ class LeadController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function edit($id)
+   public function edit(Lead $lead, ManageLeadRequest $request)
    {
-      //
+      return view('backend.management.lead.edit')->withLead($lead);
    }
 
    /**
@@ -97,9 +98,28 @@ class LeadController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function update(Request $request, $id)
+   public function update(Lead $lead, UpdateLeadRequest $request)
    {
-      //
+      $this->leads->update($lead, [
+         'data' => $request->only(
+            'name',
+            'company_name',
+            'contact_person',
+            'email',
+            'mobile_number',
+            'phone_number',
+            'additional_information',
+            'appointment_schedule',
+            'date_contacted',
+            'overall_assessment',
+            'nature_of_business',
+            'note',
+            'reminder'
+            )
+         ]
+      );
+
+      return redirect()->back()->withFlashSuccess(trans('alerts.backend.management.lead.updated', ['lead' => $lead->name]));
    }
 
    /**
@@ -108,8 +128,10 @@ class LeadController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function destroy($id)
+   public function destroy(Lead $lead, ManageLeadRequest $request)
    {
-      //
+      $this->leads->delete($lead);
+
+      return redirect()->route('admin.management.lead.deleted')->withFlashSuccess(trans('alerts.backend.management.lead.deleted', ['lead' => $lead->name]));
    }
 }

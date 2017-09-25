@@ -134,7 +134,8 @@ return [
                'contact_person'           => 'Contact Person',
                'email'                    => 'E-mail',
                'position'                 => 'Position',
-               'phone_number'             => 'Phone Number'
+               'phone_number'             => 'Phone Number',
+               'mobile_number'            => 'Mobile Number'
             ]
          ],
 

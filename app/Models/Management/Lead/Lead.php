@@ -4,7 +4,7 @@ namespace App\Models\Management\Lead;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Management\Lead\Traits\Relationships\LeadRelationship;
-use App\Models\Management\Lead\Traits\Attributes\LeadAttribute;
+use App\Models\Management\Lead\Traits\Attribute\LeadAttribute;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Lead extends Model
@@ -27,6 +27,8 @@ class Lead extends Model
       'reminder',
       'overall_assessment'
    ];
+
+   protected $appends = ['appointed_schedule'];
 
    public function __construct(array $attributes = [])
    {

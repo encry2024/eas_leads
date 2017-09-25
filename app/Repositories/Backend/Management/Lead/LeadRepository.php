@@ -43,6 +43,7 @@ class LeadRepository extends BaseRepository
          config('management.leads_table').'.contact_person',
          config('management.leads_table').'.email',
          config('management.leads_table').'.phone_number',
+         config('management.leads_table').'.mobile_number',
          config('management.leads_table').'.appointment_schedule',
          config('management.leads_table').'.date_contacted',
          config('management.leads_table').'.nature_of_business',
@@ -86,9 +87,10 @@ class LeadRepository extends BaseRepository
 
       $lead->name = $data['name'];
       $lead->company_name = $data['company_name'];
-      $lead->contact_person = $input['contact_person'];
-      $lead->email = $input['email'];
-      $lead->phone_number = $input['phone_number'];
+      $lead->contact_person = $data['contact_person'];
+      $lead->email = $data['email'];
+      $lead->phone_number = $data['phone_number'];
+      $lead->mobile_number = $data['mobile_number'];
       $lead->nature_of_business = $data['nature_of_business'];
       $lead->additional_information = $data['additional_information'];
       $lead->note = $data['note'];
@@ -117,6 +119,7 @@ class LeadRepository extends BaseRepository
       $lead->contact_person = $input['contact_person'];
       $lead->email = $input['email'];
       $lead->phone_number = $input['phone_number'];
+      $lead->mobile_number = $input['mobile_number'];
       $lead->nature_of_business = $input['nature_of_business'];
       $lead->additional_information = $input['additional_information'];
       $lead->note = $input['note'];

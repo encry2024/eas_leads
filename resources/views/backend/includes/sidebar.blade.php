@@ -10,7 +10,7 @@
          <div class="pull-left info">
             <p>{{ access()->user()->full_name }}</p>
             <!-- Status -->
-            <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('strings.backend.general.status.online') }}</a>
+            <p>Role: {{ access()->user()->roles[0]->name }}<p>
          </div><!--pull-left-->
       </div><!--user-panel-->
 
@@ -31,6 +31,13 @@
             <a href="{{ route('admin.management.lead.index') }}">
                <i class="fa fa-asterisk"></i>
                <span>{{ trans('menus.backend.management.lead.title') }}</span>
+            </a>
+         </li>
+
+         <li class="{{ active_class(Active::checkUriPattern('admin/management/call_disposition*')) }}">
+            <a href="{{ route('admin.management.call_disposition.index') }}">
+               <i class="fa fa-phone"></i>
+               <span>{{ trans('menus.backend.management.call_disposition.title') }}</span>
             </a>
          </li>
 

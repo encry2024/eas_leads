@@ -18,9 +18,17 @@ return [
          'lead'      => [
             'title'  => 'Leads Management',
 
+            'all'       => 'View Leads',
+            'create'    => 'Create Leads',
+            'deleted'   => 'Deleted Leads',
+         ],
 
-            'all'    => 'View Leads',
-            'create' => 'Create Leads'
+         'call_disposition'   => [
+            'title'              => 'Call Disposition Management',
+
+            'all'                => 'View Call Dispositions',
+            'create'             => 'Create Call Disposition',
+            'deleted'            => 'Deleted Call Disposition'
          ]
       ],
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Backend\Access\User;
+namespace App\Http\Requests\Backend\Management\CallDisposition;
 
 use App\Http\Requests\Request;
 
 /**
-* Class UpdateUserRequest.
+* Class ManageCallDispositionRequest.
 */
-class UpdateUserRequest extends Request
+class ManageCallDispositionRequest extends Request
 {
    /**
    * Determine if the user is authorized to make this request.
@@ -16,7 +16,7 @@ class UpdateUserRequest extends Request
    */
    public function authorize()
    {
-      return access()->hasRole(1);
+      return access()->allow('view-backend');
    }
 
    /**
@@ -27,9 +27,7 @@ class UpdateUserRequest extends Request
    public function rules()
    {
       return [
-         'email' => 'required|email|max:191',
-         'first_name'  => 'required|max:191',
-         'last_name'  => 'required|max:191',
+         //
       ];
    }
 }
